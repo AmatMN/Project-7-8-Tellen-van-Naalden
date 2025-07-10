@@ -5,22 +5,29 @@ from fastapi.responses import HTMLResponse, StreamingResponse
 from picamera2 import Picamera2
 import time
 import uvicorn
-from ultralytics import YOLO
+from ultralytics import YOLO  # <-- Changed
 from collections import defaultdict
 import threading
 
 counts_lock = threading.Lock()
-latest_counts = {}  # Stores current counts visible in the frame
+latest_counts = {}
 
 # Load YOLOv8 model
 model = YOLO("needles-yv8n.pt")
 
 CLASS_NAMES = ["BV75-4", "C-1", "CT-1", "CT-1 plus", "CTX", "CV-3", "CV-5", "FS-2", "MH plus", "P-3", "UR-6"]
 
-# Camera setup
-picam2 = Picamera2()
-picam2.configure(picam2.create_preview_configuration(main={"format": 'RGB888', "size": (640, 480)}))
-picam2.start()
+latest_counts.clear()
+
+picam2 = None
+
+def initialize_camera():
+    global picam2
+    if picam2 is None:
+        picam2 = Picamera2()
+        picam2.configure(picam2.create_preview_configuration(main={"format": 'RGB888', "size": (640, 480)}))
+        picam2.set_controls({"AfMode": 2})
+        picam2.start()
 
 # Settings
 INFERENCE_SKIP_FRAMES = 4
@@ -44,7 +51,6 @@ def detect_objects(frame):
             scores.append(float(box.conf))
             class_ids.append(int(box.cls))
 
-    # Count per-frame unique detections
     frame_counts = defaultdict(int)
     for cls_id in class_ids:
         frame_counts[cls_id] += 1
@@ -72,6 +78,7 @@ def draw_boxes(frame, boxes, scores, class_ids, duration_ms):
 
 def generate_frames():
     global frame_count, last_results
+    initialize_camera()  # <-- Ensure camera is started
     while True:
         frame = picam2.capture_array()
         frame_count += 1
@@ -96,8 +103,7 @@ def index():
     <head><title>Needle Detector</title></head>
     <body>
         <h2>YOLOv8 Needle Detection Stream</h2>
-        <img src="/video" width="640" height="480">
-        <p><a href="/counts">View Needle Counts</a></p>
+        <img src="/video" width="960" height="1080">
     </body>
     </html>
     """
@@ -118,7 +124,7 @@ def counts():
     <html>
     <head>
         <title>Needle Counts</title>
-        <meta http-equiv="refresh" content="2">
+        <meta http-equiv="refresh" content="1">
         <style>
             table {{
                 border-collapse: collapse;
@@ -140,12 +146,12 @@ def counts():
             <tr><th>Needle Type</th><th>Count</th></tr>
             {table_rows}
         </table>
-        <p>Auto-refresh every 2 seconds</p>
+        <p>Auto-refresh every 1 seconds</p>
         <p><a href="/">Back to stream</a></p>
     </body>
     </html>
     """
 
 if __name__ == "__main__":
-    print("FastAPI server running at http://localhost:8000")
+    print("🚀 FastAPI server running at http://localhost:8000")
     uvicorn.run("yolo-stream:app", host="0.0.0.0", port=8000)

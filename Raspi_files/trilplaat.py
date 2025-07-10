@@ -44,11 +44,11 @@ try:
         step = 1
         delay = 0.1
         while True:
-            for freq in range(1, 501, step):
+            for freq in range(1, args.frequency + 1, step):
                 pwm.ChangeFrequency(freq)
                 print(freq)
                 time.sleep(delay)
-            for freq in range(500, 0, -step):
+            for freq in range(args.frequency, 0, -step):
                 pwm.ChangeFrequency(freq)
                 print(freq)
                 time.sleep(delay)
