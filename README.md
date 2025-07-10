@@ -1,5 +1,22 @@
 # Project-7-8-Tellen-van-Naalden
 
+**Probleemstelling**
+Het handmatig tellen van chirurgische hechtnaalden tijdens operaties is een tijdrovend en foutgevoelig 
+proces. OK-assistenten zijn verantwoordelijk voor het bijhouden van het aantal naalden dat gebruikt en 
+verwijderd wordt, maar dit proces is volledig afhankelijk van menselijke concentratie en 
+nauwkeurigheid. In stressvolle of drukke situaties bestaat het risico dat een naald over het hoofd wordt 
+gezien of verkeerd wordt geregistreerd. 
+
+Het ontbreken van een betrouwbare, geautomatiseerde controlemethode vergroot de kans op 
+menselijke fouten. Vooral bij kleine naalden, die sterk variëren in formaat en vaak bedekt zijn met 
+bloed of hechtdraad, is een visuele controle lastig. Het achterblijven van een naald in het lichaam van 
+de patiënt kan leiden tot ernstige complicaties, extra operaties en juridische gevolgen. 
+
+Er is daarom behoefte aan een systeem dat chirurgische naalden automatisch detecteert, telt en 
+onderscheidt, ongeacht hun fysieke toestand of positie. Het ontbreken van een dergelijk systeem 
+vormt het centrale probleem binnen dit project. 
+
+
 # Handleiding Automatische Naalden Teller
 
 Inhoud
