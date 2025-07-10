@@ -4,13 +4,13 @@
 
 Inhoud
 
-[**Naalden Tellen	2**](#naalden-tellen)
+[**Naalden Tellen**](#naalden-tellen)
 
-[**Verder werken aan de dataset	5**](#verder-werken-aan-de-dataset)
+[**Verder werken aan de dataset**](#verder-werken-aan-de-dataset)
 
-[Foto’s nemen met de opstelling	5](#foto’s-nemen-met-de-opstelling)
+[Foto’s nemen met de opstelling](#foto’s-nemen-met-de-opstelling)
 
-[**Installeren van de code op een nieuwe Raspberry pi	6**](#installeren-van-de-code-op-een-nieuwe-raspberry-pi)
+[**Installeren van de code op een nieuwe Raspberry pi**](#installeren-van-de-code-op-een-nieuwe-raspberry-pi)
 
 # Naalden Tellen {#naalden-tellen}
 
