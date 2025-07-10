@@ -89,7 +89,7 @@ De makkelijkste manier om deze foto’s van de Raspberry Pi af te halen is door 
 # Installeren van de code op een nieuwe Raspberry pi {#installeren-van-de-code-op-een-nieuwe-raspberry-pi}
 
 1\.   
-Download de code van de github en verplaats de bestanden in de folder raspi_files naar de raspberry pi op een gewenste locatie. /home/<<naam van raspberry pi>>/ is het makkelijkst
+Download de code van de github en verplaats de bestanden in de folder raspi_files naar de raspberry pi op een gewenste locatie. /home/naam_van_raspberry_pi/ is het makkelijkst
 
 2\.  
 Run de volgende commando’s:
