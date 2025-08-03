@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse, StreamingResponse
 from picamera2 import Picamera2
 import time
 import uvicorn
-from ultralytics import YOLO  # <-- Changed
+from ultralytics import YOLO 
 from collections import defaultdict
 import threading
 
